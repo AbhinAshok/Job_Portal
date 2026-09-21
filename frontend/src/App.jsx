@@ -33,6 +33,9 @@ import Messages from "./pages/shared/Messages";
 import Settings from "./pages/shared/Settings";
 import NotFound from "./pages/NotFound";
 
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
+
 export default function App() {
   return (
     <ErrorBoundary>
@@ -45,6 +48,8 @@ export default function App() {
           <Route path="/companies/:id" element={<CompanyDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
         </Route>
 
         <Route element={<ProtectedRoute />}>

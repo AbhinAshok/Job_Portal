@@ -7,6 +7,8 @@ export const authApi = {
   me: () => api.get("auth/me/"),
   updateMe: (payload) => api.patch("auth/me/", payload),
   changePassword: (payload) => api.post("auth/password/change/", payload),
+  forgotPassword: (email) => api.post("auth/password/reset/", { email }),
+  resetPassword: (payload) => api.post("auth/password/reset/confirm/", payload),
   candidateProfile: () => api.get("auth/profile/candidate/"),
   updateCandidateProfile: (form) => api.patch("auth/profile/candidate/", form),
   recruiterProfile: () => api.get("auth/profile/recruiter/"),
@@ -73,5 +75,7 @@ export const messagesApi = {
   send: (payload) => api.post("messaging/", payload),
   markRead: (id) => api.patch(`messaging/${id}/mark_read/`)
 };
+
+
 
 export const toItems = unwrapList;

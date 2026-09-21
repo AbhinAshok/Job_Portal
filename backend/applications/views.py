@@ -69,3 +69,5 @@ class ApplicationViewSet(viewsets.ModelViewSet):
                 )
 
         return Response(ApplicationDetailSerializer(application).data)
+
+

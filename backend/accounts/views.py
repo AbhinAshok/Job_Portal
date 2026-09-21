@@ -9,7 +9,8 @@ from .models import User, CandidateProfile, RecruiterProfile
 from .permissions import IsCandidate, IsRecruiter
 from .serializers import (
     RegisterSerializer, UserSerializer, CustomTokenObtainPairSerializer,
-    ChangePasswordSerializer, CandidateProfileSerializer, RecruiterProfileSerializer,
+    ChangePasswordSerializer, CandidateProfileSerializer, RecruiterProfileSerializer, PasswordResetConfirmSerializer, 
+    PasswordResetRequestSerializer,
 )
 
 
@@ -95,3 +96,23 @@ class RecruiterProfileView(generics.RetrieveUpdateAPIView):
             user=self.request.user, defaults={'company_name': ''}
         )
         return profile
+
+
+class PasswordResetRequestView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = PasswordResetRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'detail': 'If an account with that email exists, a reset link has been sent.'})
+
+
+class PasswordResetConfirmView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = PasswordResetConfirmSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'detail': 'Password has been reset successfully.'})

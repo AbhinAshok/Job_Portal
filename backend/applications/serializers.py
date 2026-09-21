@@ -75,7 +75,7 @@ class ApplicationStatusUpdateSerializer(serializers.ModelSerializer):
         fields = ['status']
 
     def validate_status(self, value):
-        # optional: enforce allowed transitions
+        
         allowed = {c[0] for c in Application.Status.choices}
         if value not in allowed:
             raise serializers.ValidationError("Invalid status.")
