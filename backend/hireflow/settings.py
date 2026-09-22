@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cv278^-1*3g)x15*s@*!5f@f8neqw^3*&mkny#9x+d(gvt+&8h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
 ALLOWED_HOSTS = ['job-portal-mh53.onrender.com', 'localhost', '127.0.0.1']
