@@ -11,8 +11,9 @@ export const authApi = {
   resetPassword: (payload) => api.post("api/auth/password/reset/confirm/", payload),
   candidateProfile: () => api.get("api/auth/profile/candidate/"),
   updateCandidateProfile: (form) => api.patch("api/auth/profile/candidate/", form),
-  recruiterProfile: () => api.get("api/auth/profile/recruiter/"),
-  updateRecruiterProfile: (payload) => api.patch("api/auth/profile/recruiter/", payload)
+  // recruiterProfile: () => api.get("api/auth/profile/recruiter/"),
+  // updateRecruiterProfile: (payload) => api.patch("api/auth/profile/recruiter/", payload)
+  updateRecruiterProfile: (payload) => api.patch("api/auth/me/", payload)
 };
 
 export const companiesApi = {
