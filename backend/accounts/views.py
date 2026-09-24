@@ -98,6 +98,7 @@ class RecruiterProfileView(generics.RetrieveUpdateAPIView):
         return profile
 
 
+
 class PasswordResetRequestView(APIView):
     permission_classes = [permissions.AllowAny]
 

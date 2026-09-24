@@ -37,6 +37,10 @@ class JobViewSet(viewsets.ModelViewSet):
         if self.action == 'list' and not is_staff_role:
             qs = qs.filter(is_active=True)
 
+        company_id = self.request.query_params.get('company')
+        if company_id:
+            qs = qs.filter(company_id=company_id)
+
         return filter_jobs(qs, self.request.query_params)
 
     def get_permissions(self):

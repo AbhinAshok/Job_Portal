@@ -11,9 +11,9 @@ export const authApi = {
   resetPassword: (payload) => api.post("auth/password/reset/confirm/", payload),
   candidateProfile: () => api.get("auth/profile/candidate/"),
   updateCandidateProfile: (form) => api.patch("auth/profile/candidate/", form),
-  // recruiterProfile: () => api.get("api/auth/profile/recruiter/"),
-  // updateRecruiterProfile: (payload) => api.patch("api/auth/profile/recruiter/", payload)
-  updateRecruiterProfile: (payload) => api.patch("auth/me/", payload)
+  recruiterProfile: () => api.get("auth/profile/recruiter/"),           // ✅ uncommented, /api removed
+  updateRecruiterProfile: (payload) => api.patch("auth/profile/recruiter/", payload),
+  
 };
 
 export const companiesApi = {
@@ -56,7 +56,7 @@ export const interviewsApi = {
   upcoming: () => api.get("interviews/upcoming/"),
   create: (payload) => api.post("interviews/", payload),
   update: (id, payload) => api.patch(`interviews/${id}/`, payload),
-  remove: (id) => api.delete(`ainterviews/${id}/`),
+  remove: (id) => api.delete(`interviews/${id}/`),                   
   updateStatus: (id, status) => api.patch(`interviews/${id}/update_status/`, { status })
 };
 
